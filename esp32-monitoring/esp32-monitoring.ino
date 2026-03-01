@@ -81,32 +81,20 @@ const char index_html[] PROGMEM = R"rawliteral(
   </style>
 </head>
 <body>
-  <h2>ESP32 DHT Server</h2>
+  <h2>Environmental Monitoring</h2>
   <p>%TIMESTAMP%</p>
   <p>Temperature: <span id="temperature">%TEMPERATURE%</span>&deg;C</p>
   <p>Humidity: <span id="humidity">%HUMIDITY%</span>&percnt;</p>
 </body>
 <script>
-setInterval(function () {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("temperature").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/temperature", true);
-  xhttp.send();
-}, 10000 ) ;
-setInterval(function ( ) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("humidity").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "/humidity", true);
-  xhttp.send();
-}, 10000 ) ;
+  const getData = async(dataType) => {
+    const response = await fetch(`/${dataType}`);
+    const datapoint = await response.text();
+    document.getElementById(dataType).innerHTML = datapoint;
+  }
+
+  setInterval(getData.apply("temperature"), 10000);
+  setInterval(getData.apply("humidity"), 10000);
 </script>
 </html>)rawliteral";
 String processor(const String& var){
@@ -186,5 +174,5 @@ void loop() {
 
   display.display();
 
-  delay(1000);
+  delay(10000);
 }
