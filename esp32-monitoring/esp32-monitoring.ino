@@ -6,6 +6,8 @@
 #include "ESPAsyncWebServer.h"
 #include "time.h"
 
+#include <WiFiConstants.h>
+
 #define PIN_DHT 1
 #define PIN_SCREEN_ENABLE 2
 #define PIN_SCREEN_BUTTON 3
@@ -15,13 +17,6 @@
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C // 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-const char* ssid = "network name";
-const char* password = "password";
-IPAddress localIP(192, 168, 1, 50);
-IPAddress gateway(192, 168, 1, 1);
-IPAddress subnet(255, 255, 255, 0);
-IPAddress dns(192, 168, 1, 2);
 
 const char* ntpServer = "pool.ntp.org";
 const long gmtOffsetSeconds = 0;
