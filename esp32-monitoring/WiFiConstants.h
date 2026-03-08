@@ -1,8 +1,10 @@
 #ifndef WiFiConstants_h
 #define WiFiConstants_h
 
-const char* ssid = "network name";
-const char* password = "password";
+#include <Secrets.h>
+
+const char* ssid = SECRET_WIFI_SSID;
+const char* password = SECRET_WIFI_PASSWORD;
 
 IPAddress localIP(192, 168, 1, 50);
 IPAddress gateway(192, 168, 1, 1);
