@@ -1,7 +1,7 @@
 #ifndef WiFiConstants_h
 #define WiFiConstants_h
 
-#include <Secrets.h>
+#include <EnvMonSecrets.h>
 
 const char* ssid = SECRET_WIFI_SSID;
 const char* password = SECRET_WIFI_PASSWORD;
