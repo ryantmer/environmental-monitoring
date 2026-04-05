@@ -1,7 +1,6 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
-#include <WiFi.h>
 #include <Wire.h>
 #include "ESPAsyncWebServer.h"
 #include "time.h"
@@ -102,21 +101,6 @@ String processor(const String& var){
   return String();
 }
 
-void setupWiFi() {
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-  WiFi.mode(WIFI_STA);
-  WiFi.config(localIP, gateway, subnet, dns);
-  WiFi.begin(ssid, password);
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  Serial.println("");
-  Serial.println("WiFi connected.");
-  Serial.println(WiFi.localIP());
-}
-
 int lastButtonState = 0;
 bool checkScreenOn() {
   int buttonState = digitalRead(PIN_SCREEN_BUTTON);
@@ -162,7 +146,7 @@ void updateDisplay() {
   display.setTextColor(WHITE);
   display.setCursor(0, 0);
   display.println(timestamp);
-  display.println(WiFi.localIP());
+  display.println(getLocalIP());
   display.println(temperature);
   display.println(humidity);
 
@@ -172,7 +156,7 @@ void updateDisplay() {
 void setup() {
   Serial.begin(115200);
 
-  setupWiFi();
+  initWiFi();
   
   configTime(gmtOffsetSeconds, daylightOffsetSeconds, ntpServer);
   setenv("TZ", timezone.c_str(), 1);
