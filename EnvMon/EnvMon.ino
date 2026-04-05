@@ -1,13 +1,12 @@
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_Sensor.h>
-#include <DHT.h>
 #include <Wire.h>
 #include "ESPAsyncWebServer.h"
 
 #include <EnvMonWiFi.h>
 #include <EnvMonTime.h>
+#include <EnvMonDHT11.h>
 
-#define PIN_DHT 1
 #define PIN_SCREEN_ENABLE 2
 #define PIN_SCREEN_BUTTON 3
 
@@ -17,30 +16,7 @@
 #define SCREEN_ADDRESS 0x3C // 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-#define DHT_TYPE DHT11
-DHT dht(PIN_DHT, DHT_TYPE);
-
 AsyncWebServer server(80);
-
-String readTemperature() {
-  float t = dht.readTemperature();
-  if (isnan(t)) {    
-    Serial.println("Failed to read from DHT sensor!");
-    return "--";
-  }
-
-  return String(t);
-}
-
-String readHumidity() {
-  float h = dht.readHumidity();
-  if (isnan(h)) {
-    Serial.println("Failed to read from DHT sensor!");
-    return "--";
-  }
-
-  return String(h);
-}
 
 const char index_html[] PROGMEM = R"rawliteral(
 <!DOCTYPE HTML><html>
@@ -139,8 +115,8 @@ void setup() {
 
   initWiFi();
   initTime();
+  initDHT11();
 
-  dht.begin();
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send_P(200, "text/html", index_html, processor);
