@@ -6,7 +6,7 @@
 #include "ESPAsyncWebServer.h"
 #include "time.h"
 
-#include <WiFiConstants.h>
+#include <EnvMonWiFi.h>
 
 #define PIN_DHT 1
 #define PIN_SCREEN_ENABLE 2

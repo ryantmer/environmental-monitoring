@@ -1,5 +1,5 @@
-#ifndef WiFiConstants_h
-#define WiFiConstants_h
+#ifndef EnvMonWiFi_h
+#define EnvMonWiFi_h
 
 #include <EnvMonSecrets.h>
 
