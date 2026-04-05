@@ -3,9 +3,9 @@
 #include <DHT.h>
 #include <Wire.h>
 #include "ESPAsyncWebServer.h"
-#include "time.h"
 
 #include <EnvMonWiFi.h>
+#include <EnvMonTime.h>
 
 #define PIN_DHT 1
 #define PIN_SCREEN_ENABLE 2
@@ -16,12 +16,6 @@
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C // 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-const char* ntpServer = "pool.ntp.org";
-const long gmtOffsetSeconds = 0;
-const int daylightOffsetSeconds = 0;
-String timezone = "PST8PDT,M3.2.0,M11.1.0";
-struct tm timeinfo;
 
 #define DHT_TYPE DHT11
 DHT dht(PIN_DHT, DHT_TYPE);
@@ -46,19 +40,6 @@ String readHumidity() {
   }
 
   return String(h);
-}
-
-String getTimestamp() {
-  if (getLocalTime(&timeinfo)) {
-    char timeBuf[20];
-    strftime(timeBuf, sizeof(timeBuf), "%FT%T", &timeinfo);
-    String asString(timeBuf);
-    return timeBuf;
-  } else {
-    Serial.println("Failed to fetch time");
-    display.println("Failed to fetch time");
-    return "--";
-  }
 }
 
 const char index_html[] PROGMEM = R"rawliteral(
@@ -157,12 +138,7 @@ void setup() {
   Serial.begin(115200);
 
   initWiFi();
-  
-  configTime(gmtOffsetSeconds, daylightOffsetSeconds, ntpServer);
-  setenv("TZ", timezone.c_str(), 1);
-  tzset();
-  Serial.print("Got time from ");
-  Serial.println(ntpServer);
+  initTime();
 
   dht.begin();
   // Route for root / web page
