@@ -13,24 +13,24 @@ void initDHT11() {
   dht.begin();
 }
 
-String readTemperature() {
+float readTemperature() {
   float t = dht.readTemperature();
   if (isnan(t)) {    
     Serial.println("Failed to read from DHT sensor!");
-    return "--";
+    return -1;
   }
 
-  return String(t);
+  return t;
 }
 
-String readHumidity() {
+float readHumidity() {
   float h = dht.readHumidity();
   if (isnan(h)) {
     Serial.println("Failed to read from DHT sensor!");
-    return "--";
+    return -1;
   }
 
-  return String(h);
+  return h;
 }
 
 #endif

@@ -27,5 +27,8 @@ void loop() {
       delay(1000);
     }
   }
+
+  updateData();
+
   delay(25);
 }

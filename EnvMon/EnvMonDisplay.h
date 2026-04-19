@@ -45,11 +45,11 @@ bool checkScreenOn() {
   }
 }
 
-void updateDisplay(String timestamp, String temperature, String humidity) {
+void updateDisplay(String timestamp, float temperature, float humidity) {
   display.clearDisplay();
 
-  String t = "Temperature: " + temperature + "C";
-  String h = "Humidity: " + humidity + "%";
+  String t = "Temperature: " + String(temperature) + "C";
+  String h = "Humidity: " + String(humidity) + "%";
   Serial.println(timestamp + "; " + temperature + "; " + humidity);
 
   display.setTextSize(1);
