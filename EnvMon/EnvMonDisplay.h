@@ -57,8 +57,8 @@ void updateDisplay(String timestamp, float temperature, float humidity) {
   display.setCursor(0, 0);
   display.println(timestamp);
   display.println(getLocalIP());
-  display.println(temperature);
-  display.println(humidity);
+  display.println(t);
+  display.println(h);
 
   display.display();
 }
