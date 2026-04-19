@@ -95,30 +95,6 @@ String processor(const String& var){
   return String();
 }
 
-void updateData() {
-  time_t now = time(nullptr);
-  struct tm timeinfo;
-  localtime_r(&now, &timeinfo);
-
-  // Update historical data every hour, on the hour
-  if (timeinfo.tm_hour != lastRunHour && timeinfo.tm_min == 0) {
-    Serial.println("Time to update historical data.");
-
-    // Shift historical data
-    for (int i = 23; i > 0; i--) {
-      historicalTimestamps[i] = historicalTimestamps[i-1];
-      historicalTemperature[i] = historicalTemperature[i-1];
-      historicalHumidity[i] = historicalHumidity[i-1];
-    }
-
-    // Add new datapoints to start of arrays
-    historicalTimestamps[0] = getTimestamp();
-    historicalTemperature[0] = readTemperature();
-    historicalHumidity[0] = readHumidity();
-    lastRunHour = timeinfo.tm_hour;
-  }
-}
-
 void initServer() {
   // Route for root / web page
   server.on(AsyncURIMatcher::exact("/"), HTTP_GET, [](AsyncWebServerRequest *request){
@@ -144,6 +120,30 @@ void initServer() {
 
   // Start server
   server.begin();
+}
+
+void updateServerData() {
+  time_t now = time(nullptr);
+  struct tm timeinfo;
+  localtime_r(&now, &timeinfo);
+
+  // Update historical data every hour, on the hour
+  if (timeinfo.tm_hour != lastRunHour && timeinfo.tm_min == 0) {
+    Serial.println("Time to update historical data.");
+
+    // Shift historical data
+    for (int i = 23; i > 0; i--) {
+      historicalTimestamps[i] = historicalTimestamps[i-1];
+      historicalTemperature[i] = historicalTemperature[i-1];
+      historicalHumidity[i] = historicalHumidity[i-1];
+    }
+
+    // Add new datapoints to start of arrays
+    historicalTimestamps[0] = getTimestamp();
+    historicalTemperature[0] = readTemperature();
+    historicalHumidity[0] = readHumidity();
+    lastRunHour = timeinfo.tm_hour;
+  }
 }
 
 #endif

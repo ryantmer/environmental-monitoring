@@ -28,7 +28,7 @@ void loop() {
     }
   }
 
-  updateData();
+  updateServerData();
 
   delay(25);
 }
