@@ -15,7 +15,14 @@ void initDHT11() {
 
 float readTemperature() {
   float t = dht.readTemperature();
-  if (isnan(t)) {    
+  int retries = 0;
+  while (isnan(t) && retries < 10) {
+    Serial.print("Failed to read temperature. Retry ");
+    Serial.println(retries);
+    t = dht.readTemperature();
+    retries++;
+  }
+  if (isnan(t)) {
     Serial.println("Failed to read from DHT sensor!");
     return -1;
   }
@@ -25,6 +32,13 @@ float readTemperature() {
 
 float readHumidity() {
   float h = dht.readHumidity();
+  int retries = 0;
+  while (isnan(h) && retries < 10) {
+    Serial.print("Failed to read humidity. Retry ");
+    Serial.println(retries);
+    h = dht.readHumidity();
+    retries++;
+  }
   if (isnan(h)) {
     Serial.println("Failed to read from DHT sensor!");
     return -1;
