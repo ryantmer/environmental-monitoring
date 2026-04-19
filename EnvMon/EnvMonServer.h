@@ -144,8 +144,6 @@ void initServer() {
 
   // Start server
   server.begin();
-
-  updateData();
 }
 
 #endif
