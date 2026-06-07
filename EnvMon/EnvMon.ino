@@ -3,6 +3,7 @@
 #include <EnvMonDHT11.h>
 #include <EnvMonDisplay.h>
 #include <EnvMonServer.h>
+#include <EnvMonBME690.h>
 
 void setup() {
   Serial.begin(115200);
@@ -12,6 +13,7 @@ void setup() {
   initDHT11();
   initDisplay();
   initServer();
+  initBME();
 
   updateDisplay(getTimestamp(), readTemperature(), readHumidity());
 
@@ -29,6 +31,7 @@ void loop() {
   }
 
   updateServerData();
+  measureBME();
 
   delay(25);
 }

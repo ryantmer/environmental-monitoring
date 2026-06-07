@@ -2,7 +2,6 @@
 #define EnvMonDH11_h
 
 #include <DHT.h>
-#include <Wire.h>
 
 #define PIN_DHT 1
 #define DHT_TYPE DHT11
