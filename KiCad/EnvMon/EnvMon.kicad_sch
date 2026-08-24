@@ -2389,7 +2389,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ER_OLEDM0.91_1x-I2C"
+		(property "Value" "0.91\" I2C OLED"
 			(at 226.06 57.1499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2488,7 +2488,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Button_Switch_THT:SW_XKB_DM1-16UP-1"
+		(property "Footprint" "Button_Switch_THT:SW_Tactile_Straight_KSA0Axx1LFTR"
 			(at 121.92 102.87 0)
 			(hide yes)
 			(show_name no)
