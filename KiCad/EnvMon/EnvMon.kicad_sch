@@ -850,8 +850,8 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "U"
-				(at -3.81 6.35 0)
+			(property "Reference" "U1"
+				(at -10.16 0 90)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -861,7 +861,7 @@
 				)
 			)
 			(property "Value" "DHT11"
-				(at 3.81 6.35 0)
+				(at -7.62 0 90)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -870,7 +870,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
+			(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 				(at 0 -10.16 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -881,7 +881,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf"
+			(property "Datasheet" ""
 				(at 3.81 6.35 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -892,7 +892,7 @@
 					)
 				)
 			)
-			(property "Description" "3.3V to 5.5V, temperature and humidity module, DHT11"
+			(property "Description" ""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -939,10 +939,10 @@
 				)
 			)
 			(symbol "DHT11_1_1"
-				(pin power_in line
+				(pin bidirectional line
 					(at 0 7.62 270)
 					(length 2.54)
-					(name "VDD"
+					(name "DATA"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -957,10 +957,10 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin power_in line
 					(at 7.62 0 180)
 					(length 2.54)
-					(name "DATA"
+					(name "VDD"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1004,7 +1004,7 @@
 							)
 						)
 					)
-					(number "4"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1443,7 +1443,13 @@
 		(at 203.2 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "522a1f35-25c4-4d7e-8cd1-6dd0cdd39c74")
+		(uuid "41b734d9-2ccf-4c81-bad0-413c2fb65724")
+	)
+	(junction
+		(at 198.12 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a61f8a2f-9a47-44b8-acc5-d3ba05c5c614")
 	)
 	(junction
 		(at 198.12 116.84)
@@ -1451,21 +1457,15 @@
 		(color 0 0 0 0)
 		(uuid "c6219e0d-69a3-4014-8ca8-491347f56b4b")
 	)
-	(junction
-		(at 198.12 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ca20b196-1c70-44a1-a173-3a181a2811f3")
-	)
 	(wire
 		(pts
-			(xy 203.2 45.72) (xy 234.95 45.72)
+			(xy 203.2 45.72) (xy 203.2 38.1)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "02e8a90b-0874-4713-8e95-7f37314bd0cc")
+		(uuid "01cc5904-252b-4d24-a88d-cb489dd44709")
 	)
 	(wire
 		(pts
@@ -1486,16 +1486,6 @@
 			(type default)
 		)
 		(uuid "0c386b3b-b701-4607-90b8-e98103537778")
-	)
-	(wire
-		(pts
-			(xy 191.77 53.34) (xy 139.7 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0fa2b3a5-30a6-45ac-a8ee-1a2897898df3")
 	)
 	(wire
 		(pts
@@ -1529,6 +1519,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 45.72) (xy 234.95 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cb6ac34-d63f-459f-8888-bae0d4a6eee7")
+	)
+	(wire
+		(pts
 			(xy 121.92 116.84) (xy 198.12 116.84)
 		)
 		(stroke
@@ -1536,6 +1536,16 @@
 			(type default)
 		)
 		(uuid "3000ddc7-7a71-4228-9fa5-ca9a64511d7e")
+	)
+	(wire
+		(pts
+			(xy 203.2 38.1) (xy 190.5 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30abab6e-1958-4d97-80f8-aa9dd07f7052")
 	)
 	(wire
 		(pts
@@ -1556,6 +1566,16 @@
 			(type default)
 		)
 		(uuid "3f0d699f-e9bc-4221-9844-7176e6d2b047")
+	)
+	(wire
+		(pts
+			(xy 203.2 86.36) (xy 203.2 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "538f7762-5177-40a6-9eac-950d2bc711e4")
 	)
 	(wire
 		(pts
@@ -1586,6 +1606,16 @@
 			(type default)
 		)
 		(uuid "5759f18d-2d62-4153-9616-8b7d0439e0bc")
+	)
+	(wire
+		(pts
+			(xy 182.88 45.72) (xy 139.7 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57f40bf0-0d58-41d7-906c-bd11a8b419cb")
 	)
 	(wire
 		(pts
@@ -1639,13 +1669,13 @@
 	)
 	(wire
 		(pts
-			(xy 203.2 45.72) (xy 203.2 86.36)
+			(xy 139.7 45.72) (xy 139.7 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "6d578b43-e512-43b5-81e0-7b8e92edd776")
+		(uuid "6aebe41d-dad2-41b0-96d9-5dee3db796b2")
 	)
 	(wire
 		(pts
@@ -1669,16 +1699,6 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 45.72) (xy 203.2 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87ce5c98-9072-42d6-82b1-9a83f9866e45")
-	)
-	(wire
-		(pts
 			(xy 198.12 116.84) (xy 198.12 82.55)
 		)
 		(stroke
@@ -1686,26 +1706,6 @@
 			(type default)
 		)
 		(uuid "8ea2aa5c-cccd-4b8c-a582-feefbad80ee4")
-	)
-	(wire
-		(pts
-			(xy 184.15 45.72) (xy 184.15 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "92d01837-11aa-4711-9146-80a061d51c9d")
-	)
-	(wire
-		(pts
-			(xy 184.15 57.15) (xy 198.12 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9336e524-aa6f-4cd8-82da-cad6ab6c99e3")
 	)
 	(wire
 		(pts
@@ -1819,26 +1819,6 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 53.34) (xy 139.7 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee8cde44-0d92-4f1b-b426-60df743ef94c")
-	)
-	(wire
-		(pts
-			(xy 198.12 57.15) (xy 198.12 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f62edc9c-6765-480a-b806-d6909f3f08b6")
-	)
-	(wire
-		(pts
 			(xy 142.24 60.96) (xy 142.24 86.36)
 		)
 		(stroke
@@ -1846,6 +1826,16 @@
 			(type default)
 		)
 		(uuid "fa8ead3b-d548-43b4-8b6a-3018b1e78d30")
+	)
+	(wire
+		(pts
+			(xy 198.12 45.72) (xy 198.12 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbf41498-99a4-41df-bff2-9f89ee01ec67")
 	)
 	(wire
 		(pts
@@ -2131,7 +2121,7 @@
 	)
 	(symbol
 		(lib_id "Sensor:DHT11")
-		(at 191.77 45.72 270)
+		(at 190.5 45.72 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2141,8 +2131,8 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8a067d51-d37a-4867-82d4-f88fa1a97cfe")
-		(property "Reference" "U1"
-			(at 191.77 35.56 90)
+		(property "Reference" "U2"
+			(at 190.5 53.34 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2152,7 +2142,7 @@
 			)
 		)
 		(property "Value" "DHT11"
-			(at 191.77 38.1 90)
+			(at 190.5 55.88 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2161,8 +2151,8 @@
 				)
 			)
 		)
-		(property "Footprint" "Sensor:Aosong_DHT11_5.5x12.0_P2.54mm"
-			(at 181.61 45.72 0)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 200.66 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2172,8 +2162,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://akizukidenshi.com/download/ds/aosong/DHT11.pdf"
-			(at 198.12 49.53 0)
+		(property "Datasheet" ""
+			(at 184.15 41.91 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2183,8 +2173,8 @@
 				)
 			)
 		)
-		(property "Description" "3.3V to 5.5V, temperature and humidity module, DHT11"
-			(at 191.77 45.72 0)
+		(property "Description" ""
+			(at 190.5 45.72 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2194,7 +2184,7 @@
 				)
 			)
 		)
-		(pin "4"
+		(pin "3"
 			(uuid "6712eada-1b1c-48e2-a340-225f53d93f5e")
 		)
 		(pin "3"
@@ -2209,7 +2199,7 @@
 		(instances
 			(project "EnvMon"
 				(path "/e677ddea-7a0e-491c-a92e-92eb7e7a5a2d"
-					(reference "U1")
+					(reference "U2")
 					(unit 1)
 				)
 			)
@@ -2227,7 +2217,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "be2bf55a-0032-4a17-b847-e1a4df8e5aa3")
-		(property "Reference" "U2"
+		(property "Reference" "U1"
 			(at 177.4033 110.49 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2238,7 +2228,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "XIAO-ESP32-S3-SMD"
+		(property "Value" "XIAO-ESP32-S3"
 			(at 177.4033 113.03 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2360,7 +2350,7 @@
 		(instances
 			(project "EnvMon"
 				(path "/e677ddea-7a0e-491c-a92e-92eb7e7a5a2d"
-					(reference "U2")
+					(reference "U1")
 					(unit 1)
 				)
 			)
@@ -2400,7 +2390,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Display:ER_OLEDM0.91_1x-I2C"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 216.916 68.58 0)
 			(hide yes)
 			(show_name no)
